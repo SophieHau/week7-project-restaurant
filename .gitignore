@@ -1,0 +1,7 @@
+__pycache__/
+env/
+install.bat
+install.sh
+run.bat
+run.sh
+demo-images/
