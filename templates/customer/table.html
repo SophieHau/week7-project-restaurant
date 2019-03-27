@@ -14,11 +14,63 @@
 				{% endfor %}
 			{% endif %}
 		{% endwith %}
-
-	<!-- To do: add menu content here. -->
+		<div class="container">
+			<div class="row">
+				<div class="col-6 mt-5">
+					<h2 class="text-center">Food</h2>
+					<div class="list-group">
+						{% for menu_item in menu %}
+							{% if menu_item.category == 'food' %}
+					  <ul class="list-group mt-3">
+						  <a href="{{ url_for('make_order', menu_item_id=menu_item.id) }}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"><img src="{{ menu_item.image }}" class="menu-item-image">
+						    <span><h3>{{ menu_item.name }}</h3></span>
+						    <span class="badge badge-primary badge-pill pt-2"><h3>${{ menu_item.price }}</h3></span>
+						  </a>
+						</ul>
+					  		{% endif %}
+					  	{% endfor %}
+					</div>
+				</div>
+				<div class="col-6 mt-5">
+					<h2 class="text-center">Drinks</h2>
+					<div class="list-group">
+						{% for menu_item in menu %}
+							{% if menu_item.category == 'drink' %}
+					  <ul class="list-group mt-3">
+						  <a href="{{ url_for('make_order', menu_item_id=menu_item.id) }}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"><img src="{{ menu_item.image }}" class="menu-item-image">
+						    <span><h3>{{ menu_item.name }}</h3></span>
+						    <span class="badge badge-primary badge-pill pt-2"><h3>${{ menu_item.price }}</h3></span>
+						  </a>
+						</ul>
+					  		{% endif %}
+					  	{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 	<div class="section-orders">
-		<!-- To do: add orders content here. -->
+			<div class="row justify-content-between mb-5">
+		 	 <div class="col-6">
+				<h2 class="text-center">Your Order</h2>
+				{{ order }}
+				{% for order in orders %}
+				<div class="list-group">
+				<ul class="list-group mt-3">
+					<li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+					<span><h3>{{ order.menu_item.name }}</h3></span>
+					<span class="badge badge-primary badge-pill pt-2"><h3>${{ order.menu_item.price }}</h3></span>
+					</li>
+				</ul>
+			 	</div>
+			 	{% endfor %}
+			 </div>
+			 <div class="col-6 align-items">
+			 	<a href="{{ url_for('leave_table', table_id=session['table_id']) }}" role="button" class="btn btn-primary">Leave</a>
+			 </div>
+			</div>
+	</div>
+	<div class="row mb-5">
 	</div>
 </div>
 {% endblock %}
