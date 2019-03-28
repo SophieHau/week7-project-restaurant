@@ -131,8 +131,9 @@ def leave_table(table_id):
 `   Clear the session table id.
     Render the 'bye' template.'''
     Order.query.filter_by(table_id=table_id).delete()
+    table = Table.query.get(table_id)
+    table.status = 'free'
     db.session.commit()
-    set_session_table_id(None)
     return render_template('customer/bye.html')
 
 

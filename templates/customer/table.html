@@ -49,7 +49,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="section-orders">
+	<div class="container">
 			<div class="row justify-content-between mb-5">
 		 	 <div class="col-6">
 				<h2 class="text-center">Your Order</h2>
@@ -65,8 +65,8 @@
 			 	</div>
 			 	{% endfor %}
 			 </div>
-			 <div class="col-6 align-items">
-			 	<a href="{{ url_for('leave_table', table_id=session['table_id']) }}" role="button" class="btn btn-primary">Leave</a>
+			 <div class="col-2 align-content-end">
+			 	<a href="{{ url_for('leave_table', table_id=session['table_id']) }}" role="button" class="btn btn-primary ">Leave</a>
 			 </div>
 			</div>
 	</div>
